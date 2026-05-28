@@ -1,0 +1,403 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>दूध बिल कैलकुलेटर - मल्टी यूजर प्रोफाइल</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            max-width: 550px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f0f2f5;
+        }
+        .calculator {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+        h3 {
+            background-color: #e7e1e1;
+            box-shadow: 0px 0px 1px 1px #e7e1e1;
+            color: #237dd7;
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 0;
+        }
+        .profile-section {
+            background: #eef2ff;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            flex: 1;
+            transition: 0.2s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .btn-danger {
+            background-color: #dc3545;
+        }
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+        .btn-secondary {
+            background-color: #6c757d;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f5e9;
+            border-radius: 10px;
+            border-left: 5px solid #2ecc71;
+            font-size: 14px;
+        }
+        hr {
+            margin: 10px 0;
+        }
+        .signature-inputs {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        .signature-inputs > div {
+            flex: 1;
+        }
+        h4 {
+            margin: 10px 0 5px;
+            color: #2c7be5;
+        }
+        @media (max-width: 500px) {
+            body {
+                padding: 10px;
+            }
+            .button-group button {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="calculator">
+    <h3>🥛 दूध बिल कैलकुलेटर (मल्टी प्रोफाइल)</h3>
+
+    <!-- प्रोफाइल मैनेजमेंट सेक्शन -->
+    <div class="profile-section">
+        <label for="customerSelect">📋 ग्राहक चुनें:</label>
+        <select id="customerSelect">
+            <option value="">-- नया ग्राहक बनाएँ --</option>
+        </select>
+        <div class="button-group">
+            <button id="saveProfileBtn">💾 प्रोफ़ाइल सेव करें</button>
+            <button id="deleteProfileBtn" class="btn-danger">🗑️ प्रोफ़ाइल हटाएँ</button>
+        </div>
+        <small style="color: #555;">नोट: नाम डालकर "प्रोफ़ाइल सेव करें" से नया ग्राहक बनेगा या पुराना अपडेट होगा।</small>
+    </div>
+
+    <!-- ग्राहक जानकारी फॉर्म -->
+    <label for="name">👤 ग्राहक का नाम:</label>
+    <input type="text" id="name" placeholder="जैसे: बिनोद">
+
+    <div style="display: flex; gap: 10px;">
+        <div style="flex:1">
+            <label for="startdate">📅 प्रारंभ तिथि:</label>
+            <input type="date" id="startdate">
+        </div>
+        <div style="flex:1">
+            <label for="enddate">📅 अंतिम तिथि:</label>
+            <input type="date" id="enddate">
+        </div>
+    </div>
+
+    <label for="fat">🥛 फैट (%):</label>
+    <input type="number" id="fat" placeholder="जैसे: 6.5" step="0.1" min="0">
+
+    <label for="rate">💰 फैट रेट (₹/%):</label>
+    <input type="number" id="rate" placeholder="जैसे: 8.00" step="0.01" min="0">
+
+    <label for="milk">🧴 दूध (लीटर):</label>
+    <input type="number" id="milk" placeholder="जैसे: 20" step="0.5" min="0">
+
+    <label for="baki">📉 पिछला बक़ाया (₹):</label>
+    <input type="number" id="baki" placeholder="जैसे: 200" step="10" min="0" value="0">
+
+    <label for="jama">📈 पिछला जामा (₹):</label>
+    <input type="number" id="jama" placeholder="जैसे: 200" step="10" min="0" value="0">
+
+    <!-- Signature Section -->
+    <div style="margin-top: 20px; border-top: 1px solid #ddd; padding-top: 15px;">
+        <h4>📝 हस्ताक्षर (वैकल्पिक)</h4>
+        <div class="signature-inputs">
+            <div>
+                <label for="customerSign">ग्राहक के हस्ताक्षर:</label>
+                <input type="text" id="customerSign" placeholder="नाम लिखें" style="font-family: 'Brush Script MT', cursive;">
+            </div>
+            <div>
+                <label for="ownerSign">संचालक के हस्ताक्षर:</label>
+                <input type="text" id="ownerSign" placeholder="नाम लिखें" style="font-family: 'Brush Script MT', cursive;" value="Kanha Milk">
+            </div>
+        </div>
+    </div>
+
+    <button id="calculateBtn">🧾 बिल कैलकुलेट करें</button>
+
+    <div id="result" class="result"></div>
+</div>
+
+<script>
+    // ------------------- ग्लोबल वेरिएबल ------------------
+    let customers = [];   // array of {name, fat, rate, baki, jama, bills?}
+
+    // DOM elements
+    const customerSelect = document.getElementById('customerSelect');
+    const nameInput = document.getElementById('name');
+    const startdateInput = document.getElementById('startdate');
+    const enddateInput = document.getElementById('enddate');
+    const fatInput = document.getElementById('fat');
+    const rateInput = document.getElementById('rate');
+    const milkInput = document.getElementById('milk');
+    const bakiInput = document.getElementById('baki');
+    const jamaInput = document.getElementById('jama');
+    const customerSignInput = document.getElementById('customerSign');
+    const ownerSignInput = document.getElementById('ownerSign');
+    const resultDiv = document.getElementById('result');
+
+    // ------------------- localStorage फ़ंक्शन ------------------
+    function loadCustomersFromStorage() {
+        const stored = localStorage.getItem('milk_customers');
+        if(stored) {
+            customers = JSON.parse(stored);
+        } else {
+            // डिफ़ॉल्ट डेमो ग्राहक (अगर कुछ नहीं है तो)
+            customers = [];
+        }
+    }
+
+    function saveCustomersToStorage() {
+        localStorage.setItem('milk_customers', JSON.stringify(customers));
+    }
+
+    // ड्रॉपडाउन रिफ्रेश
+    function refreshCustomerDropdown() {
+        const selectedValue = customerSelect.value;
+        customerSelect.innerHTML = '<option value="">-- नया ग्राहक बनाएँ --</option>';
+        customers.forEach(cust => {
+            const option = document.createElement('option');
+            option.value = cust.name;
+            option.textContent = cust.name;
+            customerSelect.appendChild(option);
+        });
+        // पहले से select था तो उसे रिस्टोर करें (अगर अब भी मौजूद हो)
+        if(selectedValue && customers.some(c => c.name === selectedValue)) {
+            customerSelect.value = selectedValue;
+        } else {
+            customerSelect.value = "";
+        }
+    }
+
+    // सेलेक्टेड कस्टमर को फॉर्म में लोड करना
+    function loadCustomerToForm(customerName) {
+        const cust = customers.find(c => c.name === customerName);
+        if(cust) {
+            nameInput.value = cust.name;
+            fatInput.value = cust.fat;
+            rateInput.value = cust.rate;
+            bakiInput.value = cust.baki;
+            jamaInput.value = cust.jama;
+            // हस्ताक्षर ग्राहक के हिसाब से सेव नहीं कर रहे, वैकल्पिक है, इसलिए छेड़ना नहीं
+        } else {
+            // अगर नाम मौजूद नहीं तो फॉर्म खाली न करें, बस
+        }
+    }
+
+    // वर्तमान फॉर्म की वैल्यूज से कस्टमर ऑब्जेक्ट बनाना/अपडेट करना
+    function saveCurrentProfile() {
+        let name = nameInput.value.trim();
+        if(name === "") {
+            alert("कृपया ग्राहक का नाम लिखें!");
+            return false;
+        }
+        const fat = parseFloat(fatInput.value);
+        const rate = parseFloat(rateInput.value);
+        const milk = parseFloat(milkInput.value); // milk को सेव तो नहीं करेंगे प्रोफाइल में, बस बकाया/जमा/फैट/रेट
+        if(isNaN(fat) || isNaN(rate)) {
+            alert("फैट और रेट अवश्य भरें (भले ही 0 हो)");
+            return false;
+        }
+        const baki = parseFloat(bakiInput.value) || 0;
+        const jama = parseFloat(jamaInput.value) || 0;
+
+        const existingIndex = customers.findIndex(c => c.name === name);
+        const profileData = {
+            name: name,
+            fat: fat,
+            rate: rate,
+            baki: baki,
+            jama: jama
+        };
+        if(existingIndex !== -1) {
+            customers[existingIndex] = profileData;
+        } else {
+            customers.push(profileData);
+        }
+        saveCustomersToStorage();
+        refreshCustomerDropdown();
+        // सेव करने के बाद ड्रॉपडाउन में इसी नाम को सेलेक्ट करें
+        customerSelect.value = name;
+        alert(`"${name}" की प्रोफ़ाइल सेव हो गई।`);
+        return true;
+    }
+
+    function deleteCurrentProfile() {
+        const name = customerSelect.value;
+        if(!name) {
+            alert("पहले कोई ग्राहक सेलेक्ट करें जिसे डिलीट करना है।");
+            return;
+        }
+        if(confirm(`क्या आप "${name}" की पूरी प्रोफ़ाइल हटाना चाहते हैं?`)) {
+            customers = customers.filter(c => c.name !== name);
+            saveCustomersToStorage();
+            refreshCustomerDropdown();
+            // फॉर्म रीसेट करें (नाम सहित)
+            nameInput.value = "";
+            fatInput.value = "";
+            rateInput.value = "";
+            bakiInput.value = "0";
+            jamaInput.value = "0";
+            milkInput.value = "";
+            customerSignInput.value = "";
+            ownerSignInput.value = "Kanha Milk";
+            resultDiv.innerHTML = "";
+            alert("प्रोफ़ाइल हटा दी गई।");
+        }
+    }
+
+    // जब ड्रॉपडाउन सेलेक्ट बदले
+    function onCustomerSelect() {
+        const selectedName = customerSelect.value;
+        if(selectedName) {
+            loadCustomerToForm(selectedName);
+        } else {
+            // नया ग्राहक बनाने के लिए फॉर्म थोड़ा रीसेट करें (सिर्फ नाम खाली करें, बाकी पुराना रहने दें या डिफॉल्ट)
+            nameInput.value = "";
+            // बाकी फील्ड्स न छुएं ताकि यूजर भर सके
+        }
+    }
+
+    // ---------- बिल कैलकुलेशन (मुख्य फंक्शन) ----------
+    function calculateBill() {
+        const name = nameInput.value.trim() || "अतिथि";
+        const startdate = startdateInput.value;
+        const enddate = enddateInput.value;
+        let fat = parseFloat(fatInput.value);
+        let rate = parseFloat(rateInput.value);
+        let milk = parseFloat(milkInput.value);
+        let baki = parseFloat(bakiInput.value) || 0;
+        let jama = parseFloat(jamaInput.value) || 0;
+        const customerSign = customerSignInput.value.trim() || "__________";
+        const ownerSign = ownerSignInput.value.trim() || "Kanha Milk";
+
+        // वैलिडेशन
+        if(isNaN(fat) || isNaN(rate) || isNaN(milk) || milk <= 0) {
+            resultDiv.innerHTML = "<p style='color:red;'>❌ कृपया फैट, दर और दूध की मात्रा (लीटर) सही से भरें।</p>";
+            return;
+        }
+        if(fat < 0 || rate < 0) {
+            resultDiv.innerHTML = "<p style='color:red;'>❌ फैट और रेट ऋणात्मक नहीं हो सकते।</p>";
+            return;
+        }
+
+        const milkAmountRaw = fat * rate * milk;
+        const milkAmount = milkAmountRaw.toFixed(2);
+        const totalRaw = milkAmountRaw + baki - jama;
+        const total = totalRaw.toFixed(2);
+
+        // बिल HTML
+        let dateRange = "";
+        if(startdate && enddate) dateRange = `${startdate} से ${enddate}`;
+        else if(startdate) dateRange = `${startdate} से आज`;
+        else if(enddate) dateRange = `आरंभ से ${enddate}`;
+        else dateRange = "आज की तारीख";
+
+        resultDiv.innerHTML = `
+            <h4>🧾 दूध बिल - ${name}</h4>
+            <p><b>अवधि:</b> ${dateRange}</p>
+            <hr>
+            <p><b>🥛 फैट:</b> ${fat}% &nbsp;| <b>💰 दर:</b> ₹${rate}/% प्रति लीटर &nbsp;| <b>🧴 दूध:</b> ${milk} लीटर</p>
+            <p><b>💵 दूध की राशि:</b> ₹${milkAmount}</p>
+            ${baki !== 0 ? `<p><b>📉 पिछला बक़ाया:</b> ₹${baki}</p>` : ''}
+            ${jama !== 0 ? `<p><b>📈 पिछला जामा (जमा):</b> ₹${jama}</p>` : ''}
+            <hr>
+            <p style="font-size: 1.3em; font-weight: bold;">💰 कुल देय राशि: ₹${total}</p>
+            <hr>
+            <p><b>✍️ ग्राहक हस्ताक्षर:</b> ${customerSign}</p>
+            <p><b>✍️ संचालक हस्ताक्षर:</b> ${ownerSign}</p>
+            <small style="color: #555;">यह बिल कंप्यूटर जनरेटेड है | धन्यवाद 🙏</small>
+        `;
+    }
+
+    // ---------- पेज लोड पर सेटअप ----------
+    function init() {
+        loadCustomersFromStorage();
+        refreshCustomerDropdown();
+
+        // आज की तारीख दोनों डेट फील्ड में डालें
+        const today = new Date().toISOString().split('T')[0];
+        startdateInput.value = today;
+        enddateInput.value = today;
+
+        // ईवेंट लगाएं
+        document.getElementById('saveProfileBtn').addEventListener('click', saveCurrentProfile);
+        document.getElementById('deleteProfileBtn').addEventListener('click', deleteCurrentProfile);
+        document.getElementById('calculateBtn').addEventListener('click', calculateBill);
+        customerSelect.addEventListener('change', onCustomerSelect);
+
+        // अगर पहले से कोई ग्राहक सेलेक्ट है तो लोड करें (dropdown change नहीं होगा खुद से)
+        if(customerSelect.value) {
+            onCustomerSelect();
+        }
+    }
+
+    init();
+</script>
+</body>
+</html>

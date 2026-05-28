@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.slider-container {
+  width: 40%;
+  height: 5%;
+  margin: 50px auto;
+  /* overflow: hidden; */
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  transition: opacity 0.5s ease;
+}
+
+.slide img {
+  width: 100%;
+  height: 50%;
+  height: auto;
+  box-shadow: 0 0 10px rgba(1, 2, 3, 6);
+  object-fit: cover;
+  image-resolution: 100% 100%;
+  background-image: 100% 100%;
+}
+
+/* To create the sliding effect */
+@keyframes slideAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  33.33% {
+    transform: translateX(-100%);
+  }
+  66.66% {
+    transform: translateX(-200%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.slider {
+  animation: slideAnimation 9s infinite;
+}
+
+  </style>
+</head>
+<body>
+
+  <div class="slider-container">
+    <div class="slider">
+      <div class="slide">
+        <img src="" alt="Slide 1">
+      </div>
+      <div class="slide">
+        <img src="" alt="Slide 2">
+      </div>
+      <div class="slide">
+        <img src="images (3).jpeg" alt="Slide 3">
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

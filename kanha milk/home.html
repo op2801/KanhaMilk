@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanha Dairy - Pure & Fresh Milk Products</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <body>
+        <style>
+        /* Custom Styles with Premium Design */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        :root {
+            --primary-color: #2e7d32;
+            --primary-dark: #1b5e20;
+            --primary-light: #4caf50;
+            --secondary-color: #ffc107;
+            --secondary-dark: #ffa000;
+            --accent-color: #ff6b35;
+            --light-color: #f8f9fa;
+            --dark-color: #2c3e50;
+            --text-light: #f5f5f5;
+            --text-dark: #333;
+            --gold: #ffd700;
+            --cream: #fff9e6;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.1);
+            --shadow-md: 0 10px 30px rgba(0,0,0,0.15);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.2);
+            --gradient-primary: linear-gradient(135deg, #2e7d32, #4caf50);
+            --gradient-gold: linear-gradient(135deg, #ffd700, #ffa500);
+            /* --gradient-dark: linear-gradient(135deg, #1e2b1e, #2c3e2c); */
+             --gradient-dark: linear-gradient(135deg, #19150f, #2c3e2c);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            padding-top: 80px;
+            /* background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%); */
+              background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1550583724-b2692b85b150?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+             position: relative;
+             text-align: center;
+
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-primary);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #ffd700, #ffa500);
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            background: white !important;
+            padding: 0.8rem 0;
+            box-shadow: var(--shadow-md);
+            border-bottom: 3px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 0;
+            background: rgba(255,255,255,0.98) !important;
+            backdrop-filter: blur(10px);
+            
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color) !important;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+            color: var(--gold) !important;
+            color: gold;
+        }
+
+        .navbar-brand img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+            transition: all 0.5s ease;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .navbar-brand:hover img {
+            transform: rotate(360deg);
+            border-color: var(--primary-color);
+        }
+
+        .nav-link {
+            color: var(--dark-color) !important;
+            font-weight: 500;
+             /* margin: 0 8px; */
+            padding: 8px 16px !important;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+       
+          .nav-link::before {
+         content: '';
+         position: absolute;
+         bottom: 0;
+          left: 50%;
+         transform: translateX(-50%);
+          width: 0;
+         height: 3px;
+         background: var(--gradient-gold);
+          transition: width 0.3s ease;
+         }
+
+          .nav-link:hover::before,
+          .nav-link.active::before {
+           width: 80%;
+           } 
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary-color) !important;
+            background: rgba(255,215,0,0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Slider Container */
+        .slider-container {
+            position: relative;
+            max-width: 1400px;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 5px solid white;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            min-width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0,0,0,0.7), transparent);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .slide:hover::before {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            transition: transform 8s ease;
+        }
+
+        .slide:hover img {
+            transform: scale(1.1);
+        }
+
+        .slide-caption {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 25px 35px;
+            border-radius: 20px;
+            max-width: 500px;
+            z-index: 2;
+            border-left: 6px solid var(--gold);
+            transform: translateY(30px);
+            opacity: 0;
+            animation: slideInUp 1s ease forwards 0.5s;
+        }
+
+        @keyframes slideInUp {
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .slide-caption h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .slide-caption p {
+            font-size: 1.1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--gradient-gold);
+            color: var(--dark-color);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+        }
+
+        .prev:hover, .next:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: var(--shadow-lg);
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .slider-dots {
+            text-align: center;
+            padding: 20px 0;
+            position: absolute;
+            bottom: 20px;
+            width: 100%;
+            z-index: 10;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            border: 2px solid white;
+        }
+      
+          
+             .dot.active {
+             background-color: var(--gold);
+             transform: scale(1.3);
+              }
+
+        .dot:hover {
+            background-color: white;
+            transform: scale(1.2);
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+            background:white;
+            margin: 40px 0;
+            border-radius: 50px 50px 0 0;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+             backdrop-filter: blur(2px);
+        }
+
+        .content-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--gradient-gold);
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 60px;
+            font-weight: 700;
+            font-size: 2.8rem;
+            position: relative;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            z-index: 1;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%23ffd700" opacity="0.1"><path d="M50 0 L61 35 L98 35 L68 57 L79 92 L50 72 L21 92 L32 57 L2 35 L39 35 Z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: rotate 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 150px;
+            height: 4px;
+            background: var(--gradient-gold);
+            margin: 20px auto 0;
+            border-radius: 2px;
+            position: relative;
+            z-index: 2;
+         
+        }
+
+        /* Product Cards */
+        .product-card {
+            border: none;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-md);
+            background: white;
+            position: relative;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 1;
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-card:hover::before {
+            opacity: 0.1;
+        }
+
+        .product-card img {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s ease-out;;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.1);
+        }
+        
+
+        #curd {
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-card .card-body {
+            padding: 25px;
+            position: relative;
+            z-index: 2;
+            background: white;
+           
+        }
+
+        .product-card .card-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .product-card .card-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient-gold);
+            transition: width 0.3s ease;
+        }
+
+        .product-card:hover .card-title::after {
+            width: 100px;
+        }
+
+        .product-card .card-text {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-sm);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            background: var(--gradient-gold);
+            color: var(--dark-color);
+        }
+
+        .btn-primary:hover::before {
+            left: 100%;
+        }
+
+        /* Why Choose Us Section */
+        .bg-light {
+            background: linear-gradient(135deg, #f8f9fa, #fff) !important;
+        }
+
+        .text-center {
+            padding: 30px;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .text-center:hover {
+            background: white;
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .text-center i {
+            font-size: 3.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.5s ease;
+        }
+
+        .text-center:hover i {
+            transform: rotateY(360deg) scale(1.2);
+        }
+
+        .text-center h4 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin: 20px 0 15px;
+            font-size: 1.5rem;
+        }
+
+        .text-center p {
+            color: #666;
+            margin: 0;
+        }
+
+        /* Footer */
+        
+
+         .footer {
+            background: linear-gradient(135deg, #1e2b1e 0%, #2c3e2c 100%);
+            color: white;
+            padding: 60px 0 30px;
+            border-radius: 30px 30px 0 0;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h4 {
+            color: #ffd700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            text-align: center;
+            padding-bottom: 12px;
+        }
+
+    .footer-section h4::after{
+         content: '';
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+         transform: translateX(-50%);
+          width: 50px;
+         height: 3px;
+          background: var(--gold);
+         border-radius: 2px;
+         }
+
+        .footer-section p {
+            display: flex;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            word-break: break-word;
+        }
+
+        .footer-section i {
+            color: #ffd700;
+            width: 25px;
+             flex-shrink: 0;
+        }
+
+        .footer-section a {
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+             word-break: break-all;
+        }
+
+        .footer-section a:hover {
+            color: #ffd700;
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        
+         .social-links a {
+            color: white;
+         background: rgba(255,255,255,0.1);
+         width: 40px;
+         height: 40px;
+         display: inline-flex;
+         align-items: center;
+         justify-content: center;
+         border-radius: 50%;
+         transition: all 0.3s ease;       
+          }
+
+       .social-links a:hover {
+        transform: translateY(-5px);
+         background: var(--gold);
+        color: var(--dark-color);
+         }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(180, 54, 8, 0.2);
+        }
+   
+
+         /* Social Links Styles */
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            color: var(--gold);
+            transform: translateY(-5px) scale(1.2);
+        }
+        
+        .text-gold {
+            color: var(--gold);
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* skeleton.css */
+      .skeleton {
+       background: linear-gradient(90deg, #e0e0e0 25%, #f0f0f0 50%, #e0e0e0 75%);
+       background-size: 200% 100%;
+       animation: loading 1.5s infinite;
+       border-radius: 8px;
+        }
+        @keyframes loading { 
+            0% { background-position: 200% 0; }
+             100% { background-position: -200% 0; }
+             }
+         .skeleton-card {
+          width: 100%;
+          height: 250px;
+           }
+          .skeleton-text {
+            height: 20px;
+             margin: 10px 0;
+              }
+
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .slide img { height: 500px; }
+            .section-title { font-size: 2.4rem; }
+        }
+
+        @media (max-width: 992px) {
+            .navbar-brand { font-size: 1.5rem; }
+            .navbar-brand img { width: 45px; height: 45px; }
+            .slide img { height: 450px; }
+            .slide-caption { max-width: 70%; padding: 20px; }
+            .slide-caption h3 { font-size: 1.6rem; }
+        }
+
+        @media (max-width: 768px) {
+            body { padding-top: 70px; }
+            .navbar-brand { font-size: 1.3rem; }
+            .navbar-brand img { width: 40px; height: 40px; }
+            .slide img { height: 350px; }
+            .slide-caption { 
+                max-width: 90%; 
+                bottom: 20px; 
+                left: 20px; 
+                padding: 15px;
+            }
+            .slide-caption h3 { font-size: 1.3rem; }
+            .slide-caption p { font-size: 0.9rem; }
+            .section-title { font-size: 2rem; }
+            .prev, .next { width: 40px; height: 40px; font-size: 20px; }
+        }
+
+        @media (max-width: 576px) {
+            .slide img { height: 300px; }
+            .slide-caption { padding: 12px; }
+            .slide-caption h3 { font-size: 1.2rem; }
+            .product-card img, #curd { height: 200px; }
+            .section-title { font-size: 1.8rem; }
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease;
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease;
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+         .navbar-toggler {
+        padding: 8px 12px;
+        border: 2px solid var(--gold);
+        }
+
+         .navbar-toggler:focus {
+        box-shadow: 0 0 0 3px rgba(255,215,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="milk product/slide6.jpg" alt="Kanha Dairy Logo">
+                <span>Kanha Dairy</span>
+                 
+            </a>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a href="home.html" class="nav-link active">Home</a>
+                    <a href="product.html" class="nav-link">Products</a>
+                    <a href="fat.html" class="nav-link">Fat Rates</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="career.html" class="nav-link">Careers</a>
+                 
+                <a href="profile.html" class="nav-link">
+                    <i class="fas fa-user"></i> My Account
+                </a>
+            </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Image Slider Section -->
+    <section>
+        <div class="slider-container">
+            <div class="slider">
+                <div class="slide">
+                    <img src="milk product/slide9.jpg" alt="Kanha Milk Products">
+                    <div class="slide-caption">
+                        <h3>Pure & Fresh Milk</h3>
+                        <p>Direct from our farms to your home with love and care</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="milk product/slide8.jpg" alt="Kanha Dairy Products">
+                    <div class="slide-caption">
+                        <h3>Quality Dairy Products</h3>
+                        <p>Ghee, Curd, Paneer and more - all traditionally made</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="milk product/slide7.jpg" alt="Kanha Milk Special Offer">
+                    <div class="slide-caption">
+                        <h3>Special Offers</h3>
+                        <p>Enjoy discounts on bulk orders and subscription plans</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="milk product/slide6.jpg" alt="Kanha Milk Farm">
+                    <div class="slide-caption">
+                        <h3>Farm Fresh</h3>
+                        <p>From our happy cows to your family - pure happiness</p>
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="milk product/slide5.jpg" alt="Kanha Milk Delivery">
+                    <div class="slide-caption">
+                        <h3>Home Delivery</h3>
+                        <p>Fresh milk delivered to your doorstep every morning</p>
+                    </div>
+                </div>
+            </div>
+            <button class="prev" aria-label="Previous slide">❮</button>
+            <button class="next" aria-label="Next slide">❯</button>
+            <div class="slider-dots">
+                <span class="dot active"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Products Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Our Premium Products</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <img src="milk product/slide2.jpg" class="card-img-top" alt="Fresh Milk">
+                        <div class="card-body">
+                            <h5 class="card-title">Fresh Milk</h5>
+                            <p class="card-text">Pure, pasteurized milk with all natural goodness preserved. Rich in calcium and proteins.</p>
+                            <a href="product.html" class="btn btn-primary">View Details <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <img src="milk product/ghee.jpg" class="card-img-top" alt="Pure Ghee">
+                        <div class="card-body">
+                            <h5 class="card-title">Pure Ghee</h5>
+                            <p class="card-text">Traditional method prepared ghee with rich aroma and taste. 100% pure desi ghee.</p>
+                            <a href="product.html" class="btn btn-primary">View Details <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card product-card">
+                        <img src="milk product/dahi.webp" class="card-img-top" id="curd" alt="Fresh Curd">
+                        <div class="card-body">
+                            <h5 class="card-title">Fresh Curd</h5>
+                            <p class="card-text">Thick and creamy curd made from pure milk. Perfect for your daily meals.</p>
+                            <a href="product.html" class="btn btn-primary">View Details <i class="fas fa-arrow-right ms-2"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Why Choose Us Section -->
+    <section class="content-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Why Choose Kanha Dairy?</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-truck fa-3x"></i>
+                        </div>
+                        <h4>Home Delivery</h4>
+                        <p>Fresh products delivered daily to your doorstep before sunrise.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-award fa-3x"></i>
+                        </div>
+                        <h4>Quality Assurance</h4>
+                        <p>Stringent quality checks at every stage of production and packaging.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-cow fa-3x"></i>
+                        </div>
+                        <h4>Farm Fresh</h4>
+                        <p>Direct from our farms, ensuring maximum freshness and nutrition.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-leaf fa-3x"></i>
+                        </div>
+                        <h4>100% Natural</h4>
+                        <p>No preservatives, no chemicals - just pure natural products.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-clock fa-3x"></i>
+                        </div>
+                        <h4>24/7 Service</h4>
+                        <p>Round the clock customer service for all your needs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="text-center">
+                        <div class="mb-3">
+                            <i class="fas fa-heart fa-3x"></i>
+                        </div>
+                        <h4>Made with Love</h4>
+                        <p>Every product made with traditional care and affection.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+      <!-- Footer -->
+     <!-- <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-2 mb-4">
+                    <h4 class="footer-heading"><i class="fas fa-store me-2"></i>Kanha Dairy</h4>
+                    <p>Providing pure and fresh dairy products since 1995. Our commitment to quality has made us a trusted name in the dairy industry. We believe in serving nature's best to your family.</p>
+                    <div class="mt-3">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <span class="ms-2">(4.9/5 Rating)</span>
+                    </div>
+                </div>
+                 <div class="col-lg-4 col-md-6 mb-4">
+                    <h4 class="footer-heading"><i class="fas fa-link me-2"></i>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="product.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="carrer.html">career</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                     
+                    </ul>
+                </div> 
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <h4 class="footer-heading"><i class="fas fa-address-card me-2"></i>Contact Us</h4>
+                    <ul class="footer-links">
+                         <li><i class="fas fa-map-marker-alt"></i> Mahaveer Nagar, Sector C, Flat No 34A, Bhopal, MP - 462001</li>
+                           <li><a href="mailto:teriemail@gmail.com?cc=copy@gmail.com&bcc=hidden@gmail.com">
+                          <i class="fas fa-envelope"></i> Email: info@kanhamilk97.com
+                          </a></li>
+                         <li> <a href="tel:+916269220670"><i class="fas fa-phone"></i> Toll Free: +91 62692 20670</a></li>
+                        
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 6:00 AM - 8:00 PM<br>Sunday: 7:00 AM - 6:00 PM</li> 
+                         
+                    </ul>
+                    <div style="opacity: 1;" class="social-links mt-3">
+                        <a href="#" class="me-3"><i style="color: rgb(19, 19, 175);" class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="me-3"><i style="color: rgb(255, 0, 0);" class="fab fa-instagram"></i></a>
+                        <a href="#" class="me-3"><i style="color: rgb(5, 5, 100);" class="fab fa-twitter"></i></a>
+                        <a href="#" class="me-3"><i style="color: green;" class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="me-3"><i style="color: red;" class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2026 Kanha Dairy. All rights reserved. | Made with <i class="fas fa-heart"></i> in India | FSSAI License: 12345678901234</p>
+                <p class="mt-2"><i class="fas fa-shield-alt"></i> Privacy Protected | <i class="fas fa-certificate"></i> ISO 22000:2018 Certified</p>
+            </div>
+        </div>
+    </footer>    -->
+
+
+
+      <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-store"></i> Kanha Dairy</h4>
+                      <p>Providing pure and fresh dairy products since 1995. Our commitment to quality has made us a trusted name in the dairy industry. We believe in serving nature's best to your family.</p>
+                    <div class="mt-3">
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <i class="fas fa-star text-gold"></i>
+                        <span class="ms-2">(4.9/5 Rating)</span>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-clock"></i> Business Hours</h4>
+                    <p><i class="fas fa-sun"></i> Monday - Saturday: 6:00 AM - 8:00 PM</p>
+                    <p><i class="fas fa-moon"></i> Sunday: 7:00 AM - 6:00 PM</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-envelope"></i> contact us</h4>
+                      <p><i class="fas fa-map-marker-alt"></i> Mahaveer Nagar, Sector C, Flat No 34A, Bhopal, MP - 462001</p>
+                         <p><a href="tel:+916269220670"><i class="fas fa-phone"></i> Toll Free: +91 62692 20670</a></p>
+                    <p><a href="mailto:teriemail@gmail.com?cc=copy@gmail.com&bcc=hidden@gmail.com">
+                          <i class="fas fa-envelope"></i> Email: kanhamilk97@gmail.com
+                          </a></p>
+                       
+                </div>
+               
+                <div class="footer-section">
+                    <h4><i class="fas fa-share-alt"></i> Follow Us</h4>
+                    <div class="social-links">
+                          <a href="#"><i style="color: blue;" class="fab fa-facebook"></i></a>
+                            <a href="#"><i style="color: red;" class="fab fa-instagram"></i></a>
+                            <a href="#"><i style="color: blue;" class="fab fa-twitter"></i></a>
+                            <a href="#"><i style="color: green;" class="fab fa-whatsapp"></i></a>
+                            <a href="#"><i style="color: red;" class="fab fa-youtube"></i></a>
+                    </div>
+                    <p style="margin-top: 20px;"><i class="fas fa-certificate"></i> FSSAI License: 12345678901234</p>
+                      <p><i class="fas fa-certificate"></i>  ISO 22000:2018 Certified</p>
+                      
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Kanha Milk Dairy. All Rights Reserved. | Made with <i class="fas fa-heart" style="color: #ffd700;"></i> in India</p>
+                <p style="font-size: 0.9rem;"><i class="fas fa-shield-alt"></i> Your privacy is our priority | Pure & Natural</p>
+            </div>
+        </div>
+    </footer>
+     
+
+     
+                 
+                
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="index.js"></script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.product-card, .text-center').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+
+
+
+          
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    const slider = document.querySelector('.slider');
+    const totalSlides = slides.length;
+
+    function updateSlider() {
+        slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            if (index === currentSlide) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        updateSlider();
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        updateSlider();
+    }
+
+    // Event listeners for buttons
+    document.querySelector('.prev').addEventListener('click', prevSlide);
+    document.querySelector('.next').addEventListener('click', nextSlide);
+
+    // Dot click functionality
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateSlider();
+        });
+    });
+
+    // Auto slide every 5 seconds
+    setInterval(nextSlide, 25000);
+
+        });
+      
+    </script>
+  
+    </body>
+</html>       
+    
+

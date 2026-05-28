@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanha_milk login</title>
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+            display: flex;
+            justify-content: center;
+           
+        }
+         p{
+            font-size: 2rem;
+            margin: 5px;
+            color: green;
+            
+         }     
+        .regi-box{
+            width: 400px;
+            height: 400px;
+             padding: 10px;
+             margin-top: 10%;
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 2px;
+            text-align: center;
+            box-shadow: 10px 10px 10px 10px white;
+            
+        }
+        form{
+            width: 100%;
+            height: 100%;
+           background: #ffffff63;
+            padding: 10px;
+            
+        }
+        input{
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px;
+           border-radius: 8px;
+           font-size: 1rem;
+           /* text-transform: uppercase; */
+        }
+        input:focus{
+           border: 1px solid green;
+           outline: none;
+        }
+
+        button{
+            margin-top: 20px;
+            width: 80%;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            font-size: 1rem;
+            border-radius: 8px;
+        }
+        #signupBtn:focus{
+            background-color:#8B4513 ;
+        }
+    </style>
+</head>
+<body>
+    <div class="regi-box">
+          
+        <form action="php" method="post">
+            <p>login</p>
+           
+             <label for="username"></label>
+             <input type="text" id="username"  placeholder="username" required>
+             <label for="password"></label>
+             <input type="password" id="password" placeholder="password" required>
+
+             <button>login</button>
+          <a href="signup.html"><button type="button" id="signupBtn">New user</button></a></a>
+
+
+
+        </form>
+       
+        
+    </div>
+    <script>
+    document.querySelector('form').addEventListener('submit',function (event) {
+        event.preventDefault();
+
+        const username= document.getElementById('username').value;
+        const password= document.getElementById('password').value;
+
+        // ______ for validation_____
+        let isvalid=true;
+        let errorMassage="";
+         
+        if(username.trim()==="") {
+           errorMassage="username cannot be empaty";
+           isvalid=false;
+        }
+        else if(!isNaN(username) && username.trim() !==""){
+            errorMassage= "username should be a string (text) not just number";
+            isvalid=false;
+        }
+
+        if(isvalid && !/^\d+$/.test(password)){
+            errorMassage="password must be contain only number (digit 0 to 9)";
+            isvalid=false;  
+        }
+        if(!isvalid){
+            alert(errorMassage);
+            console.log(`validation failed ${errorMassage} ` );
+            return;
+        }
+   
+    //__________ condition check_______   
+
+        const storedUser = JSON.parse(localStorage.getItem('signupUser'));
+
+    if (!storedUser) {
+        alert("No account found. Please sign up first.");
+        return;
+    }
+
+    if (storedUser.username.toLowerCase() === username.toLowerCase() && 
+        storedUser.password === password) {
+        console.log("Login successful");
+        window.location.href = "home.html";
+    } else {
+        alert("Wrong username or password");
+        console.log("Login failed");
+    }
+        
+    })
+    </script>
+</body>
+</html>

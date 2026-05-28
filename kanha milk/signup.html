@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kanha milk -signup </title>
+    <style>
+          @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+         font-family:'Poppins', 'Segoe UI', sans-serif ;  
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         min-height: 100vh;
+         margin: 0;
+         padding: 20px;
+      }
+
+     h4{
+        font-size: 2rem;
+        color: #8B4513;
+         margin: 5px;
+     }
+        .signup{
+            width: 400px;
+            height: 600px;
+            margin-top: 10px;
+            padding: 10px;
+            text-align: center;
+            /* background-color: rgb(63, 7, 7);
+             */
+             background-color:white;
+            border: 2px solid black;
+            border-radius: 8px;
+           box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+
+        }
+        form{
+            width: 100%;
+            height: 100%;
+            padding: 10px;
+            background-color: #ffffff63;
+            
+        }
+        input{
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+       input:focus{
+           border: 1px solid green;
+           outline: none;
+           
+        }
+
+        button{
+            margin: 20px;
+            width: 80%;
+            font-size: 1.2rem;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #8B4513;
+            color: white;
+        }
+        button:focus{
+            background-color: green;
+        }
+       
+    </style>
+</head>
+<body>
+    <div class="signup">
+        <form action="signup.php">
+            <h4>signup</h4>
+            <label for="username"></label>
+            <input type="text" name="username" id="username" placeholder="Name">
+            <label for="email"></label>
+            <input type="text" name="email" id="email" placeholder="Email">
+            <label for="mobilenum"></label>
+            <input type="text" name="mobilenum" id="mobilenum" placeholder="Mobile Number">
+            <label for="password"></label>
+            <input type="password" name="password" id="password" placeholder="password">
+            <label for="cpassword"></label>
+            <input type="password" name="cpassword" id="cpassword" placeholder="confirm password">
+
+            <button type="submit">submit</button>
+           <p>Already have an account? <a href="index.html">Login here</a></p>
+           
+        </form>
+    </div>
+    <script>
+       document.querySelector('form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;      
+    const mobilenum = document.getElementById('mobilenum').value;
+    const password = document.getElementById('password').value;
+    const cpassword = document.getElementById('cpassword').value;
+
+    // ---------- Validation ----------
+    let isValid = true;
+    let errorMessage = "";
+
+   
+    if (username.trim() === "") {
+        errorMessage = "Username cannot be empty";
+        isValid = false;
+    } else if (!isNaN(username) && username.trim() !== "") {
+        errorMessage = "Username should be text, not only numbers";
+        isValid = false;
+    }
+
+  
+    if (isValid && (!email.includes('@') || !email.includes('.'))) {
+        errorMessage = "Enter a valid email address (e.g., name@example.com)";
+        isValid = false;
+    }
+
+  
+    if (isValid && !/^\d{10}$/.test(mobilenum)) {
+        errorMessage = "Mobile number must be exactly 10 digits";
+        isValid = false;
+    }
+
+   
+    if (isValid && !/^\d+$/.test(password)) {
+        errorMessage = "Password must contain only numbers (digits 0-9)";
+        isValid = false;
+    }
+
+    
+    if (isValid && password.length < 4) {
+        errorMessage = "Password must be at least 4 digits";
+        isValid = false;
+    }
+
+    // Confirm password match
+    if (isValid && password !== cpassword) {
+        errorMessage = "Passwords do not match";
+        isValid = false;
+    }
+
+    
+    if (!isValid) {
+        alert(errorMessage);
+        console.log(`Validation failed: ${errorMessage}`);
+        return;
+    }
+
+    
+    const userData = {
+        username: username,
+        email: email,
+        mobilenum: mobilenum,
+        password: password
+    };
+    
+    
+    localStorage.setItem('signupUser', JSON.stringify(userData));
+    
+    console.log("Signup successful! Please login.");
+    alert("Account created successfully! Please login.");
+    
+    
+    window.location.href = "login.html";
+});
+    </script>
+</body>
+</html>
